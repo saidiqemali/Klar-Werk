@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Klarwerk – Webseiten &amp; IT-Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF1F4;--ink:#0F1B2D;--muted:#4A5668;--accent:#2447F5;--on:#fff;--pop:#FFB800;--panel:#fff;--line:#CBD3DD;color-scheme:light;
+--d:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--b:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1120;--ink:#EAF0F8;--muted:#9AA8BC;--accent:#7C98FF;--on:#0A1120;--panel:#131D33;--line:#26365A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0A1120;--ink:#EAF0F8;--muted:#9AA8BC;--accent:#7C98FF;--on:#0A1120;--panel:#131D33;--line:#26365A;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.w{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header .w{display:flex;align-items:center;gap:1rem;padding:.9rem 0}
+.logo{font:800 1.3rem var(--d);text-decoration:none;letter-spacing:-.03em;margin-right:auto}
+nav{display:flex;gap:.25rem;overflow-x:auto}
+nav a{padding:.45rem .85rem;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:500;white-space:nowrap;transition:.2s}
+nav a:hover{color:var(--ink)}nav a.on{background:var(--ink);color:var(--bg)}
+#th{width:2.4rem;height:2.4rem;border-radius:50%;border:1px solid var(--line);background:var(--panel);flex:none}
+@media(max-width:700px){header .w{flex-wrap:wrap}nav{order:3;width:100%}}
+.pg{display:none}.pg.on{display:block;animation:in .55s cubic-bezier(.2,.7,.2,1)}
+html:not(.js) .pg{display:block}
+@keyframes in{from{opacity:0;transform:translateY(18px)}}
+.rv{transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv:not(.in){opacity:0;transform:translateY(28px)}
+.hero{position:relative;padding:clamp(2.5rem,6vw,5rem) 0 3rem;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(520px circle at var(--mx,70%) var(--my,20%),color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%);pointer-events:none}
+h1{position:relative;margin:0;font:800 clamp(3.5rem,15vw,11.5rem)/.86 var(--d);letter-spacing:-.045em}
+h1 span.l{display:block}h1 span.l+span.l{margin-left:clamp(0rem,8vw,7rem);color:var(--accent)}
+h1 i{display:inline-block;font-style:normal}
+.js h1 i{animation:drop .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*70ms)}
+@keyframes drop{from{opacity:0;transform:translateY(.6em) rotate(6deg)}}
+.row{position:relative;display:grid;gap:2rem;margin-top:2.5rem;align-items:center}
+.lead{font:500 clamp(1.4rem,3vw,2.2rem)/1.25 var(--d);letter-spacing:-.015em;margin:0;max-width:20ch}
+#tw{color:var(--accent)}.cur{display:inline-block;width:3px;height:1em;background:var(--accent);vertical-align:-.12em;margin-left:3px;animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.6rem}
+.btn{display:inline-block;padding:.9rem 1.5rem;border-radius:999px;font-weight:600;text-decoration:none;background:var(--accent);color:var(--on);border:2px solid var(--accent);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 24px -10px var(--accent)}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--ink)}
+.win{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 40px 70px -35px rgba(0,0,0,.45);width:min(100%,440px);justify-self:end;transform:rotate(1.5deg)}
+.bar{display:flex;gap:.4rem;align-items:center;padding:.7rem .9rem;border-bottom:1px solid var(--line)}
+.bar i{width:.65rem;height:.65rem;border-radius:50%;background:var(--line)}
+.bar b{margin-left:.6rem;flex:1;font:500 .8rem var(--b);color:var(--muted);background:var(--bg);border-radius:999px;padding:.2rem .8rem}
+.mk{padding:1.2rem;display:grid;gap:.7rem}
+.mk div{height:.8rem;border-radius:4px;background:var(--line);transform-origin:left;animation:bld .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(1s + var(--k)*.35s)}
+.mk .t{height:1.6rem;width:65%;background:var(--ink)}.mk .p{width:88%}.mk .q{width:60%}
+.mk .a{width:32%;height:2rem;border-radius:999px;background:var(--accent)}
+.mk .g{height:4.5rem;background:repeating-linear-gradient(90deg,var(--line) 0 30%,transparent 30% 35%);border-radius:8px}
+@keyframes bld{from{transform:scaleX(0);opacity:0}}
+@media(min-width:820px){.row{grid-template-columns:1fr auto}}
+.mq{overflow:hidden;background:var(--accent);color:var(--on);border-block:1px solid var(--line)}
+.mq div{display:flex;gap:3rem;width:max-content;padding:.9rem 0;font:800 1.3rem var(--d);letter-spacing:-.02em;animation:mq 28s linear infinite}
+.mq span::after{content:"";display:inline-block;width:.7rem;height:.7rem;border-radius:50%;background:var(--pop);margin-left:3rem}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:clamp(3rem,7vw,6rem) 0}
+h2{margin:0 0 2rem;font:800 clamp(2rem,5vw,3.8rem)/1.05 var(--d);letter-spacing:-.035em;max-width:18ch}
+h3{margin:0 0 .5rem;font:800 1.5rem/1.15 var(--d);letter-spacing:-.025em}
+p{margin:0 0 1rem}.mu{color:var(--muted)}
+.g3{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.bx{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:1.8rem;transition:transform .25s,border-color .25s}
+.bx:hover{transform:translateY(-6px);border-color:var(--accent)}
+.bx .ic{display:block;font-size:0;width:2.2rem;height:4px;background:var(--accent);border-radius:2px;margin-bottom:1.3rem}
+.free{background:var(--ink);color:var(--bg);border-radius:28px;padding:clamp(1.8rem,5vw,3.5rem)}.free h2{margin-bottom:2rem}.free p{opacity:.82}.free .g3>div{border-top:1px solid color-mix(in srgb,var(--bg) 30%,transparent);padding-top:1.2rem}.free .btn{background:var(--bg);color:var(--ink);border-color:var(--bg)}
+.stage{position:relative;justify-self:end;width:min(100%,440px)}.stage .win{width:100%;transition:transform .2s;will-change:transform}
+.chip{position:absolute;z-index:2;background:var(--pop);color:#0F1B2D;font-weight:600;font-size:.9rem;padding:.55rem 1rem;border-radius:999px;box-shadow:0 12px 30px -12px rgba(0,0,0,.5);animation:fl 5s ease-in-out infinite}.c1{top:-1rem;left:-1.2rem}.c2{bottom:2rem;right:-.8rem;animation-delay:-2.5s}
+@keyframes fl{50%{transform:translateY(-10px)}}
+#cv{position:fixed;inset:0;background:var(--accent);z-index:50;transform:translateY(100%);pointer-events:none}#cv.go{animation:cv .85s cubic-bezier(.7,0,.3,1)}
+@keyframes cv{0%{transform:translateY(100%)}45%,55%{transform:translateY(0)}100%{transform:translateY(-100%)}}
+#pb{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;z-index:30}
+.pr.hot{box-shadow:0 30px 70px -35px var(--accent)}
+header{background:color-mix(in srgb,var(--bg) 72%,transparent);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4)}
+body{background-image:radial-gradient(color-mix(in srgb,var(--ink) 10%,transparent) 1px,transparent 1px);background-size:28px 28px}
+.hero{isolation:isolate}
+.hero::after{content:"";position:absolute;z-index:-1;width:38rem;height:38rem;right:-12rem;top:-14rem;border-radius:50%;background:conic-gradient(from 90deg,var(--accent),var(--pop),var(--accent));filter:blur(90px);opacity:.3;animation:spin 18s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bx{border-radius:26px;background:color-mix(in srgb,var(--panel) 82%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.btn{box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+h2{background:linear-gradient(100deg,var(--ink) 60%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.free h2{background:none;-webkit-text-fill-color:currentColor}
+.revs{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.rc{background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:1.8rem;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.rc:hover{transform:translateY(-6px);border-color:var(--pop)}
+.stars{color:var(--pop);font-size:1.4rem;letter-spacing:.18em;margin-bottom:1rem}
+.rc p{font:500 1.15rem/1.45 var(--d);letter-spacing:-.01em;margin:0 0 1.4rem}
+.rc small{margin-top:auto;color:var(--muted);display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.rc .bd{margin:0;font-size:.72rem}
+.ct{display:grid;gap:3rem}.ct>.stp{grid-column:1/-1}
+@media(min-width:900px){.ct{grid-template-columns:1.2fr 1fr;gap:4rem}}
+.r2{display:grid;gap:1rem}@media(min-width:560px){.r2{grid-template-columns:1fr 1fr}}
+.chips{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.5rem}.chips legend{font-weight:600;margin-bottom:.7rem;padding:0}
+.chips label{display:block;font-weight:500}.chips input{position:absolute;opacity:0;width:1px;height:1px}
+.chips span{display:inline-block;padding:.55rem 1.05rem;border:1px solid var(--line);border-radius:999px;background:var(--panel);cursor:pointer;transition:.2s}
+.chips input:checked+span{background:var(--accent);color:var(--on);border-color:var(--accent)}
+.chips input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.pv{font-size:.9rem;margin:1.2rem 0 0}.fm .ok{align-self:center}
+.dc{display:flex;flex-direction:column;gap:.15rem;padding:1.3rem 3.5rem 1.3rem 1.5rem;margin-bottom:.9rem;background:var(--panel);border:1px solid var(--line);border-radius:20px;text-decoration:none;position:relative;transition:transform .25s,border-color .25s}
+.dc:hover{transform:translateX(6px);border-color:var(--accent)}.dc b{font:800 1.2rem var(--d)}.dc span{color:var(--muted);overflow-wrap:anywhere}
+.dc::after{content:"→";position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--accent)}
+.hint{margin-top:1.5rem;padding:1.3rem 1.5rem;border-left:4px solid var(--pop);background:var(--panel);border-radius:0 14px 14px 0}.hint p{margin:0 0 .5rem}.hint ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--muted)}
+.path{display:grid;gap:2rem}
+.st{position:relative;padding-left:2.2rem;border-left:3px solid var(--line)}
+.st::before{content:"";position:absolute;left:-.62rem;top:.35rem;width:1.1rem;height:1.1rem;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.yr{display:block;font:800 clamp(1.8rem,4vw,2.6rem)/1 var(--d);letter-spacing:-.04em;color:var(--accent);margin-bottom:.9rem}
+.cd{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:1.5rem;height:100%}
+.cd h3{font-size:1.25rem}.cd p{margin:0;color:var(--muted)}
+.bd{display:inline-block;background:var(--pop);color:#0F1B2D;font-weight:600;font-size:.8rem;padding:.2rem .75rem;border-radius:999px;margin-bottom:.8rem}
+.st.now::before{animation:pu 2s infinite}
+@keyframes pu{0%{box-shadow:0 0 0 0 var(--accent)}100%{box-shadow:0 0 0 14px transparent}}
+@media(min-width:900px){.path{grid-template-columns:repeat(3,1fr);gap:1.5rem}.st{padding:2.2rem 0 0;border-left:0;border-top:3px solid var(--line)}.st::before{left:0;top:-.62rem}}
+.pt{padding:clamp(2.5rem,6vw,4.5rem) 0 0}.pt h1{font-size:clamp(2.6rem,9vw,6.5rem);line-height:.95}
+ul.ck{margin:1rem 0 0;padding:0;list-style:none}
+ul.ck li{padding:.6rem 0 .6rem 2rem;border-top:1px solid var(--line);position:relative;font-weight:500}
+ul.ck li::before{content:"";position:absolute;left:.2rem;top:1.05rem;width:.9rem;height:.5rem;border:solid var(--accent);border-width:0 0 3px 3px;transform:rotate(-45deg)}
+.two{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+details{border-top:1px solid var(--line);padding:1.1rem 0}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font:800 1.25rem var(--d);letter-spacing:-.02em;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::after{content:"+";color:var(--accent);font-size:1.6rem;line-height:1;transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:.8rem 0 0;color:var(--muted);max-width:60ch;animation:in .4s}
+.tabs{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:.3rem;margin-bottom:2rem}
+.tabs button{border:0;background:none;padding:.6rem 1.3rem;border-radius:999px;font-weight:600;transition:.25s}
+.tabs button[aria-selected=true]{background:var(--accent);color:var(--on)}
+.pn{display:none}.pn.on{display:grid;animation:in .5s}
+.pr{position:relative;display:flex;flex-direction:column}
+.pr .n{font:800 clamp(2.6rem,5vw,3.6rem)/1 var(--d);letter-spacing:-.04em;margin:.8rem 0 .2rem}
+.pr .n small{font:500 1rem var(--b);letter-spacing:0;color:var(--muted)}
+.pr.hot{border:2px solid var(--accent);transform:translateY(-8px)}
+.tag{position:absolute;top:-.9rem;right:1.4rem;background:var(--pop);color:#0F1B2D;font-weight:600;font-size:.85rem;padding:.3rem .9rem;border-radius:999px}
+.pr .btn{margin-top:auto;text-align:center}.pr ul{margin-bottom:1.5rem}
+.note{margin-top:2rem;padding:1.2rem 1.5rem;border-left:4px solid var(--pop);background:var(--panel);border-radius:0 12px 12px 0}
+.tl{border-left:3px solid var(--line);margin:1.5rem 0 0 .5rem;padding-left:1.8rem;display:grid;gap:2rem}
+.tl div{position:relative}.tl div::before{content:"";position:absolute;left:-2.4rem;top:.45rem;width:1.1rem;height:1.1rem;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.tl b{font:800 1.3rem var(--d)}
+.ab{display:grid;gap:3rem}@media(min-width:820px){.ab{grid-template-columns:1fr 1.3fr;gap:5rem}}
+.ab p.big{font-size:1.25rem;max-width:52ch}
+.fm{display:grid;gap:1rem;max-width:640px}
+label{display:grid;gap:.35rem;font-weight:600}
+input,select,textarea{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;width:100%}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--accent);outline-offset:1px}
+.mail{display:inline-block;font:800 clamp(1.3rem,4vw,2.4rem)/1.1 var(--d);letter-spacing:-.03em;text-decoration:none;border-bottom:4px solid var(--accent);overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding:2rem 0 3rem;color:var(--muted);font-size:.95rem}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+:root{--bg:#F4F6FA;--ink:#0B1220;--muted:#566176;--accent:#2E48F0;--on:#fff;--pop:#E3A008;--panel:#fff;--line:#DCE1EA;--d:"Newsreader",Georgia,"Times New Roman",serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#090E1A;--ink:#EDF0F7;--muted:#9AA5BC;--accent:#7C93FF;--on:#090E1A;--panel:#101830;--line:#232F4B;--pop:#F2B632}}
+:root[data-theme="dark"]{--bg:#090E1A;--ink:#EDF0F7;--muted:#9AA5BC;--accent:#7C93FF;--on:#090E1A;--panel:#101830;--line:#232F4B;--pop:#F2B632}
+body{background-image:none}
+.hero::before,.hero::after,.chip{display:none}
+h2{background:none;-webkit-text-fill-color:currentColor}
+h1,h2,h3,.logo,.yr,.pr .n,.dc b,summary,.mq div,.rc p{font-weight:500}
+h1{letter-spacing:-.035em}h1 span.l+span.l{font-style:italic;color:var(--accent)}h1 i{font-style:inherit}
+.lead{font-weight:400}
+.js h1 i{animation:rise 1s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*45ms)}
+@keyframes rise{from{opacity:0;transform:translateY(.12em)}}
+.win{transform:none!important;border-radius:6px;box-shadow:0 30px 60px -40px rgba(0,0,0,.35)}
+#cv{background:var(--bg);transform:none;opacity:0}
+@keyframes cv{0%,100%{opacity:0}40%,60%{opacity:1}}
+.mq{background:var(--ink);color:var(--bg);border:0}.mq div{font-size:1.15rem;animation-duration:50s}.mq span::after{background:var(--pop);width:.45rem;height:.45rem}
+.btn,.btn.alt,nav a,.tabs,.tabs button,.tag,.bd,.chips span,input,select,textarea{border-radius:2px}
+.btn{box-shadow:none;letter-spacing:.02em}.btn:hover{transform:none;box-shadow:none;filter:brightness(1.15)}
+nav a.on{background:none;color:var(--ink);box-shadow:inset 0 -2px 0 var(--pop)}
+.bx,.rc,.dc,.cd,.free{border-radius:4px}.hint{border-radius:0 4px 4px 0}
+.bx{background:var(--panel);-webkit-backdrop-filter:none;backdrop-filter:none}
+.bx:hover,.rc:hover{transform:none;border-color:var(--pop)}
+.bx .ic{height:2px;background:var(--pop)}
+.pr.hot{transform:none;box-shadow:none;border:2px solid var(--accent)}
+.tag{background:var(--accent);color:var(--on)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.win{transform:none!important}.js .rv:not(.in){opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="cv"></div><div id="pb"></div>
+<header><div class="w">
+  <a class="logo" href="#start">Klarwerk</a>
+  <nav id="nav">
+    <a href="#start">Start</a><a href="#leistungen">Leistungen</a><a href="#preise">Preise</a><a href="#ueber-mich">Über mich</a><a href="#kontakt">Kontakt</a>
+  </nav>
+  <button id="th" aria-label="Hell oder dunkel umschalten">◐</button>
+</div></header>
+
+<main>
+<!-- START -->
+<div class="pg" id="start">
+  <div class="hero"><div class="w">
+    <h1 aria-label="Klarwerk"><span class="l">Klar</span><span class="l">werk</span></h1>
+    <div class="row">
+      <div>
+        <p class="lead">Ich mache <span id="tw">Webseiten</span><span class="cur"></span><br>für Ihre Firma.</p>
+        <p class="mu" style="max-width:40ch;margin-top:1rem">Softwareentwickler. Ich entwickle Webseiten, die Ihre Firma professionell zeigen, und sorge dafür, dass Ihre IT zuverlässig läuft.</p>
+        <div class="btns"><a class="btn" href="#preise">Preise ansehen</a><a class="btn alt" href="#kontakt">Kostenlos beraten lassen</a></div>
+      </div>
+      <div class="stage"><div class="chip c1">Beratung kostenlos</div><div class="chip c2">Festpreis vorab</div><div class="win" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i><b>ihre-firma.ch</b></div>
+        <div class="mk"><div class="t" style="--k:0"></div><div class="p" style="--k:1"></div><div class="q" style="--k:2"></div><div class="g" style="--k:3"></div><div class="a" style="--k:4"></div></div>
+      </div></div>
+    </div>
+  </div></div>
+  <div class="mq" aria-hidden="true"><div>
+    <span>Webseiten</span><span>IT-Support</span><span>Einfach erklärt</span><span>Faire Preise</span><span>Persönlich</span>
+    <span>Webseiten</span><span>IT-Support</span><span>Einfach erklärt</span><span>Faire Preise</span><span>Persönlich</span>
+  </div></div>
+  <section><div class="w">
+    <h2 class="rv">Was Sie bei mir bekommen.</h2>
+    <div class="g3">
+      <div class="bx rv"><span class="ic">💬</span><h3>Verständlich erklärt</h3><p class="mu">Sie bekommen klare Antworten ohne Fachjargon und entscheiden auf einer Grundlage, die Sie verstehen.</p></div>
+      <div class="bx rv"><span class="ic">💰</span><h3>Transparente Preise</h3><p class="mu">Festpreis vor Projektstart. Beratung und Ideen-Präsentation sind kostenlos.</p></div>
+      <div class="bx rv"><span class="ic">🙋</span><h3>Ein direkter Draht</h3><p class="mu">Sie sprechen immer mit mir, nicht mit einer Hotline. Das spart Zeit und verhindert Missverständnisse.</p></div>
+      <div class="bx rv"><span class="ic">📱</span><h3>Mobile first</h3><p class="mu">Viele Besucher kommen mit dem Smartphone. Ihre Seite wird zuerst dafür entwickelt.</p></div>
+    </div>
+  </div></section>
+  <section style="padding-top:0"><div class="w"><h2 class="rv">Das sagen Kunden.</h2>
+    <div class="revs">
+      <div class="rc rv"><div class="stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><p>Die Webseite war schnell fertig und sieht genau so aus, wie ich es mir vorgestellt habe.</p><small>Handwerksbetrieb <span class="bd">Beispiel</span></small></div>
+      <div class="rc rv"><div class="stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><p>Das Problem mit dem Drucker war in wenigen Minuten gelöst und verständlich erklärt.</p><small>Kleines Büro <span class="bd">Beispiel</span></small></div>
+      <div class="rc rv"><div class="stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><p>Freundlich, klar im Preis und immer erreichbar. Ich würde jederzeit wieder anfragen.</p><small>Selbstständige Beraterin <span class="bd">Beispiel</span></small></div>
+    </div>
+  </div></section>
+  <section style="padding-top:0"><div class="w"><div class="free rv">
+    <h2>Der Einstieg kostet nichts.</h2>
+    <div class="g3">
+      <div><h3>Beratungsgespräch</h3><p>Sie schildern mir Ihr Anliegen, per Telefon oder im persönlichen Gespräch. Kostenlos.</p></div>
+      <div><h3>Ideen-Präsentation</h3><p>Ich stelle Ihnen meine Vorschläge vor, per Anruf oder bei Ihnen vor Ort. Kostenlos.</p></div>
+      <div><h3>Angebot mit Festpreis</h3><p>Erst wenn Sie überzeugt sind, erhalten Sie ein verbindliches Angebot.</p></div>
+    </div>
+    <div class="btns"><a class="btn" href="#kontakt">Gespräch vereinbaren</a></div>
+  </div></div></section>
+</div>
+
+<!-- LEISTUNGEN -->
+<div class="pg" id="leistungen">
+  <div class="w pt"><h1>Was ich für Ihre Firma übernehme.</h1></div>
+  <section><div class="w two">
+    <div class="bx rv"><span class="ic">🌐</span><h3>Webseiten</h3><p class="mu">Eine Webseite, die Ihre Firma klar und professionell zeigt, auf dem Handy wie am Computer.</p>
+      <ul class="ck"><li>Gestaltung und Programmierung</li><li>Passt sich Handy und Computer an</li><li>Kontaktformular</li><li>Auffindbar bei Google (Grundlagen)</li><li>Impressum und Datenschutz-Seite</li><li>Änderungen und Pflege nach dem Start</li></ul></div>
+    <div class="bx rv"><span class="ic">🛠️</span><h3>IT-Support</h3><p class="mu">Wenn Computer, Drucker, E-Mail oder Netzwerk Probleme machen, finde ich die Ursache und löse sie.</p>
+      <ul class="ck"><li>Computer ist langsam oder hängt</li><li>E-Mail einrichten und reparieren</li><li>Drucker und Scanner</li><li>WLAN und Internet</li><li>Neue Geräte einrichten</li><li>Beratung: Was brauche ich wirklich?</li></ul></div>
+  </div></section>
+  <section style="padding-top:0"><div class="w">
+    <h2 class="rv">Einfach erklärt.</h2>
+    <details><summary>Was ist eine Domain?</summary><p>Das ist die Adresse Ihrer Webseite, zum Beispiel ihre-firma.ch. Wie eine Strassenadresse, nur im Internet.</p></details>
+    <details><summary>Was ist Hosting?</summary><p>Das ist der Platz, wo Ihre Webseite gespeichert ist. Wie ein Mietlokal für Ihre Seite, damit sie rund um die Uhr erreichbar ist.</p></details>
+    <details><summary>Was bedeutet „Google-Auffindbarkeit“?</summary><p>Wenn jemand bei Google nach Ihrer Firma oder Ihrem Angebot sucht, soll Ihre Seite gefunden werden. Dafür richte ich die Grundlagen ein.</p></details>
+    <details><summary>Was ist ein Backup?</summary><p>Eine Sicherheitskopie Ihrer Daten. Wenn etwas kaputtgeht, können wir alles zurückholen.</p></details>
+    <details><summary>Was ist das Schloss-Symbol im Browser?</summary><p>Es zeigt, dass die Verbindung zu Ihrer Seite sicher ist. Das gehört bei jeder Webseite dazu, ich richte es für Sie ein.</p></details>
+  </div></section>
+</div>
+
+<!-- PREISE -->
+<div class="pg" id="preise">
+  <div class="w pt"><h1>Preise ohne Kleingedrucktes.</h1><p class="mu" style="margin-top:1rem;max-width:44ch">Alle Preise in CHF. Beratung und Ideen-Präsentation sind kostenlos. Sie zahlen erst, wenn Sie sich für ein Projekt entscheiden.</p></div>
+  <section><div class="w">
+    <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="pw">Webseiten</button><button role="tab" aria-selected="false" data-t="pi">IT-Support</button></div>
+    <div class="pn g3 on" id="pw">
+      <div class="bx pr"><h3>Start</h3><p class="mu">Für Selbstständige, die online sichtbar sein wollen.</p><div class="n">500<small> CHF einmalig</small></div>
+        <ul class="ck"><li>Bis 3 Seiten</li><li>Ihr Logo und Ihre Farben</li><li>Für Handy und Computer</li><li>Kontaktformular</li><li>Impressum und Datenschutz</li></ul><a class="btn alt" href="#kontakt">Anfragen</a></div>
+      <div class="bx pr hot"><span class="tag">Beliebt</span><h3>Business</h3><p class="mu">Für kleine Firmen mit mehreren Angeboten.</p><div class="n">990<small> CHF einmalig</small></div>
+        <ul class="ck"><li>Alles aus Start</li><li>Bis 6 Seiten</li><li>Animationen und Bildergalerie</li><li>Google-Firmenprofil</li><li>1 Monat Betreuung</li></ul><a class="btn" href="#kontakt">Anfragen</a></div>
+      <div class="bx pr"><h3>Plus</h3><p class="mu">Für Firmen, die mehr wollen.</p><div class="n">1’690<small> CHF einmalig</small></div>
+        <ul class="ck"><li>Alles aus Business</li><li>Bis 12 Seiten</li><li>Individuelles Design</li><li>Mehrere Sprachen</li><li>3 Monate Betreuung</li></ul><a class="btn alt" href="#kontakt">Anfragen</a></div>
+    </div>
+    <div class="pn g3" id="pi">
+      <div class="bx pr"><h3>Einzelhilfe</h3><p class="mu">Sie rufen an, wenn etwas nicht geht.</p><div class="n">60<small> CHF pro Stunde</small></div>
+        <ul class="ck"><li>Fehlersuche und Behebung</li><li>Hilfe per Telefon, Fernzugriff oder vor Ort</li><li>Abrechnung nach Aufwand</li><li>Ohne Vertrag</li><li>Erklärung, was das Problem war</li><li>Erste Einschätzung am Telefon kostenlos</li></ul><a class="btn alt" href="#kontakt">Anfragen</a></div>
+      <div class="bx pr hot"><span class="tag">Beliebt</span><h3>Support-Paket</h3><p class="mu">Immer jemand da, wenn Sie Hilfe brauchen.</p><div class="n">99<small> CHF pro Monat</small></div>
+        <ul class="ck"><li>2 Stunden Hilfe pro Monat inklusive</li><li>Bevorzugte Antwort bei Anfragen</li><li>Einrichtung neuer Geräte und Konten</li><li>Regelmässiger Kurz-Check Ihrer Geräte</li><li>Beratung bei Neuanschaffungen</li><li>Weitere Stunden zum Vorzugspreis</li><li>Jederzeit kündbar</li></ul><a class="btn" href="#kontakt">Anfragen</a></div>
+      <div class="bx pr"><h3>Webseiten-Pflege</h3><p class="mu">Ich kümmere mich um Ihre Seite.</p><div class="n">29<small> CHF pro Monat</small></div>
+        <ul class="ck"><li>Kleine Änderungen an Texten und Bildern</li><li>Regelmässige Updates</li><li>Regelmässige Sicherung</li><li>Kontrolle, ob die Seite erreichbar ist</li><li>Sicherheits-Check</li><li>Bevorzugte Antwort bei Anfragen</li></ul><a class="btn alt" href="#kontakt">Anfragen</a></div>
+    </div>
+    
+  </div></section>
+  <section style="padding-top:0"><div class="w">
+    <h2 class="rv">Häufige Fragen.</h2>
+    <details><summary>Was kostet eine Website bei Ihnen?</summary><p>Ab CHF 500. Das Paket Start umfasst bis zu 3 Seiten, Business kostet CHF 990 und Plus CHF 1’690. Sie erhalten vor Projektstart einen Festpreis. Die Beratung vorab ist kostenlos.</p></details>
+    <details><summary>Was passiert, wenn mir der erste Entwurf nicht gefällt?</summary><p>Dann passen wir ihn gemeinsam an. Sie sagen mir, was Sie ändern möchten, und ich setze es um. Dank der kostenlosen Ideen-Präsentation kennen Sie die Richtung schon, bevor Sie sich entscheiden.</p></details>
+    <details><summary>Wie läuft die Bezahlung?</summary><p>Sie erhalten eine Rechnung zum vereinbarten Festpreis. Bei grösseren Projekten teilen wir die Zahlung gerne in zwei Raten auf.</p></details>
+    <details><summary>Wie lange dauert es, bis meine Website online ist?</summary><p>Das hängt vom Umfang ab. Kleine Seiten sind oft in wenigen Wochen online. Den genauen Zeitplan nenne ich Ihnen im Angebot.</p></details>
+    <details><summary>Ich habe weder Texte noch gute Bilder. Ist das ein Problem?</summary><p>Nein. Wir besprechen gemeinsam, was auf Ihre Seite soll, und ich helfe Ihnen bei den Texten. Für Bilder finden wir eine Lösung, zum Beispiel eigene Fotos vom Smartphone oder passende Bildsammlungen.</p></details>
+    <details><summary>Sie sind eine Einzelperson. Was, wenn Sie einmal ausfallen?</summary><p>Ihre Webseite gehört Ihnen. Sie erhalten alle Zugänge und eine kurze Anleitung, damit Sie jederzeit selbst oder mit einer anderen Fachperson weiterarbeiten können.</p></details>
+    <details><summary>Kann ich die Website später selbst bearbeiten?</summary><p>Ja, auf Wunsch. Ich zeige Ihnen, wie Sie Texte und Bilder selbst ändern. Wenn Sie lieber keine Zeit dafür aufwenden, übernehme ich die Änderungen im Rahmen der Webseiten-Pflege.</p></details>
+    <details><summary>Arbeiten Sie auch ausserhalb von Zürich?</summary><p>Ja. Beratung und Entwicklung funktionieren per Telefon und Online-Meeting in der ganzen Schweiz. Für Termine vor Ort besprechen wir Anfahrt und Zeitaufwand vorab.</p></details>
+  </div></section>
+</div>
+
+<!-- ÜBER MICH -->
+<div class="pg" id="ueber-mich">
+  <div class="w pt"><h1>Ich bin Saidi. Ich baue und ich repariere.</h1></div>
+  <section><div class="w ab">
+    <div class="rv"><h3>Auf einen Blick</h3><ul class="ck"><li>Webseiten entwickeln</li><li>IT-Probleme lösen</li><li>Systeme und Netzwerke verstehen</li><li>Verständlich erklären</li></ul></div>
+    <div class="rv"><p class="big">Mit 20 war die Lehre fertig. Seither habe ich Systeme betreut und Oberflächen gebaut. Ich bin 21 und habe schon beides erlebt.</p>
+      <p class="big">Ich kenne beide Seiten: das, was Kunden auf dem Bildschirm sehen, und das, was dahinter läuft. Darum denke ich mit, statt nur abzuarbeiten.</p>
+      <p class="big">Und wenn ich etwas nicht kann, sage ich das offen. Dann finde ich es heraus oder sage Ihnen, wer es kann.</p>
+      <div class="btns"><a class="btn" href="#kontakt">Schreiben Sie mir</a></div></div>
+  </div></section>
+  <section style="padding-top:0"><div class="w"><h2 class="rv">Mein Weg.</h2>
+    <div class="path">
+      <div class="st rv"><span class="yr">2021 bis 2025</span><div class="cd"><h3>Applikationsentwickler</h3><p>Vier Jahre Ausbildung: Software von der Idee bis zum fertigen Programm. Abschluss 2025, mit 20 Jahren.</p></div></div>
+      <div class="st rv"><span class="yr">2025 bis 2026</span><div class="cd"><h3>System Engineer</h3><p>Bis Sommer 2026 verantwortlich für Systeme und Infrastruktur, damit bei Firmen alles stabil läuft.</p></div></div>
+      <div class="st now rv"><span class="yr">Seit 2026</span><div class="cd"><span class="bd">Aktuell</span><h3>Frontend-Entwickler und Supporter</h3><p>Ich entwickle, was Kunden auf dem Bildschirm sehen, und löse IT-Probleme im Alltag.</p></div></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- KONTAKT -->
+<div class="pg" id="kontakt">
+  <div class="w pt"><h1>Ihre Anfrage in zwei Minuten.</h1><p class="mu" style="margin-top:1rem">Unverbindlich und kostenlos. Beratung per Telefon und Ideen-Präsentation, per Anruf oder bei Ihnen vor Ort, kosten nichts.</p></div>
+  <section><div class="w ct"><div>
+    <form class="fm" id="fm">
+      <fieldset class="chips"><legend>Worum geht es? (optional, Mehrfachauswahl)</legend><label><input type="checkbox" value="Neue Webseite"><span>Neue Webseite</span></label><label><input type="checkbox" value="Webseite überarbeiten"><span>Webseite überarbeiten</span></label><label><input type="checkbox" value="IT-Support"><span>IT-Support</span></label><label><input type="checkbox" value="Kostenloses Beratungsgespräch"><span>Beratungsgespräch</span></label><label><input type="checkbox" value="Ideen-Präsentation vor Ort"><span>Ideen-Präsentation vor Ort</span></label></fieldset>
+      <div class="r2"><label>Name<input id="fn" required autocomplete="name"></label><label>Firma (optional)<input id="fc" autocomplete="organization"></label></div>
+      <div class="r2"><label>E-Mail<input id="fe" type="email" required autocomplete="email"></label><label>Telefon (optional)<input id="fp" type="tel" autocomplete="tel"></label></div>
+      
+      <label>Ihre Nachricht<textarea id="fx" rows="5" required></textarea></label>
+      <div><button class="btn" type="submit">Unverbindlich anfragen</button></div>
+    </form>
+    <p class="mu pv">Ihre Angaben verwende ich nur, um Ihre Anfrage zu beantworten.</p></div>
+    <aside><h3 style="font-size:1.8rem;margin-bottom:1.2rem">Lieber direkt?</h3>
+      <a class="dc" href="tel:+41766027703"><b>Anrufen</b><span>076 602 77 03</span></a>
+      <a class="dc" href="https://wa.me/41766027703?text=Guten%20Tag%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Webseite." target="_blank" rel="noopener"><b>WhatsApp</b><span>Nachricht schreiben</span></a>
+      <a class="dc" href="mailto:hallo@klarwerk.ch"><b>E-Mail</b><span>hallo@klarwerk.ch</span></a>
+      <div class="hint"><p><strong>Noch keine genaue Vorstellung?</strong></p><p class="mu">Das ist normal. Wir finden es im Gespräch gemeinsam heraus. Hilfreich, aber nicht nötig:</p><ul><li>Ihre Branche</li><li>Eine Seite, die Ihnen gefällt</li><li>Ihr Logo, falls vorhanden</li></ul></div>
+    </aside>
+    <div class="stp"><h3 class="rv" style="font-size:1.8rem;margin-bottom:1.2rem">Was nach Ihrer Nachricht passiert</h3>
+      <div class="g3">
+        <div class="bx rv"><span class="yr">1</span><h3>Ich melde mich</h3><p class="mu">Ich lese Ihre Nachricht selbst und antworte Ihnen persönlich.</p></div>
+        <div class="bx rv"><span class="yr">2</span><h3>Kurzes Gespräch</h3><p class="mu">Am Telefon oder bei Ihnen vor Ort, kostenlos. Wir klären Ziel, Umfang und Termin.</p></div>
+        <div class="bx rv"><span class="yr">3</span><h3>Ideen und Festpreis</h3><p class="mu">Sie sehen meine Ideen und erhalten ein verbindliches Angebot mit Festpreis.</p></div>
+      </div></div>
+  </div></section>
+</div>
+</main>
+
+<footer><div class="w"><span>© 2026 Klarwerk, Inhaber Saidi Qemali</span><span>Webseiten und IT-Support</span></div></footer>
+
+<script>
+document.documentElement.classList.add('js');
+var R=['start','leistungen','preise','ueber-mich','kontakt'],E=email='hallo@klarwerk.ch';
+var first=true;
+function route(){var h=(location.hash||'#start').slice(1);if(R.indexOf(h)<0)h='start';
+ if(first||matchMedia('(prefers-reduced-motion:reduce)').matches){first=false;show(h);return}
+ var c=document.getElementById('cv');c.classList.remove('go');void c.offsetWidth;c.classList.add('go');setTimeout(function(){show(h)},430)}
+function show(h){
+ R.forEach(function(r){document.getElementById(r).classList.toggle('on',r===h)});
+ document.querySelectorAll('#nav a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+h)});
+ window.scrollTo(0,0);watch()}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+function watch(){document.querySelectorAll('.pg.on .rv:not(.in)').forEach(function(e,i){e.style.transitionDelay=(i%4)*90+'ms';io.observe(e)})}
+addEventListener('hashchange',route);route();
+// Name Buchstaben
+document.querySelectorAll('h1 .l').forEach(function(s,n){var t=s.textContent;s.textContent='';t.split('').forEach(function(c,i){var x=document.createElement('i');x.textContent=c;x.style.setProperty('--i',i+n*5);s.appendChild(x)})});
+// Schreibmaschine
+var W=['Webseiten','IT-Hilfe','Lösungen'],wi=0,ci=0,del=false,tw=document.getElementById('tw');
+(function tick(){var w=W[wi];ci+=del?-1:1;tw.textContent=w.slice(0,ci);var t=del?45:90;
+ if(!del&&ci===w.length){del=true;t=1400}else if(del&&ci===0){del=false;wi=(wi+1)%W.length;t=300}setTimeout(tick,t)})();
+// Spotlight
+var hero=document.querySelector('.hero');hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hero.style.setProperty('--mx',(e.clientX-r.left)+'px');hero.style.setProperty('--my',(e.clientY-r.top)+'px')});
+// 3D-Effekt und Fortschrittsbalken
+var win=document.querySelector('.win');hero.addEventListener('pointermove',function(e){var r=win.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;win.style.transform='perspective(900px) rotateY('+(x*14)+'deg) rotateX('+(-y*14)+'deg)'});hero.addEventListener('pointerleave',function(){win.style.transform=''});
+var pb=document.getElementById('pb');addEventListener('scroll',function(){var m=document.documentElement.scrollHeight-innerHeight;pb.style.transform='scaleX('+(m>0?scrollY/m:0)+')'},{passive:true});
+// Theme
+document.getElementById('th').onclick=function(){var r=document.documentElement,c=r.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');r.dataset.theme=c==='dark'?'light':'dark'};
+// Preis-Tabs
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b)});
+ document.querySelectorAll('.pn').forEach(function(p){p.classList.toggle('on',p.id===b.dataset.t)})}});
+// Formular
+document.getElementById('fm').onsubmit=function(e){e.preventDefault();
+ var t=[].map.call(document.querySelectorAll('.chips input:checked'),function(x){return x.value}).join(', '),g=function(i){return document.getElementById(i).value},s='Anfrage'+(t?': '+t:''),b='Guten Tag\n\n'+g('fx')+'\n\nFreundliche Grüsse\n'+g('fn')+(g('fc')?'\n'+g('fc'):'')+'\nE-Mail: '+g('fe')+(g('fp')?'\nTelefon: '+g('fp'):'');
+ location.href='mailto:'+E+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(b)};
+</script>
+</body>
+</html>
